@@ -159,6 +159,10 @@ class DoublyLinkedList {
 				return;
 			}
 			Node * temp = head;
+			//output the operation when customer has been helped
+                        cout << "\t";
+                        temp->data->print();
+                        cout << " is served" << endl;
 			if (head->next) {
 				head = head->next;
 				head->prev = nullptr;
@@ -225,7 +229,8 @@ class DoublyLinkedList {
 int randInt99();
 
 //operation() will add a customer to the line based on probabilities
-void operation(DoublyLinkedList *, array<string,98> names);
+//arguments: takes the DLL to add customers to the line and the names array to randomly select a name
+void operation(DoublyLinkedList * list, array<string,98> names);
 
 int main() {
 	srand(time(0));	//for the rand() to reset
@@ -250,6 +255,8 @@ int main() {
 		list.push_back(a);
 	}
 	list.print();
+	list.pop_front();
+	list.print();
 	//store opens message maybe add int for time periods, 20 total times
 	cout << "Store opens:" << endl;
 	//create DLL for the queue with 5 customers using the external file of names
@@ -263,3 +270,18 @@ int main() {
 int randInt99(){
 	return rand() % 98;
 }
+
+void operation(DoublyLinkedList * list, array<string,98> names){
+	//A customer being helped at the beginning of the line and ordering their coffee is 40%
+	int prob = rand() % 100 + 1;  // returns random number 1-100
+	if (prob <= 40) {
+    		list->pop_front();
+	}
+	//A new customer joining the end of the line is 60%
+	//The customer at the end of the line deciding they don't want to wait and leaving is 20%
+	//Any particular customer can decide they don't want to wait and leave the line: 10%
+	//A VIP (very important person) customer with a Coffee House Gold Card gets to skip the line and go straight to the counter and order: 10%
+
+
+}
+
