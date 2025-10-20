@@ -223,7 +223,9 @@ class DoublyLinkedList {
 //randInt99() takes no arguments and creates a number between 0-98 to choose a random name
 //returns generated random num
 int randInt99();
-void operation(DoublyLinkedList list, array<string> names);
+
+//operation() will add a customer to the line based on probabilities
+void operation(DoublyLinkedList *, array<string,98> names);
 
 int main() {
 	srand(time(0));	//for the rand() to reset
