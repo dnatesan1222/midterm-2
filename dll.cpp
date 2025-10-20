@@ -3,6 +3,7 @@
 
 
 #include <iostream>
+#include <fstream>
 using namespace std;
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 class Customer{
@@ -11,12 +12,17 @@ class Customer{
 		bool isVIP;
 	public:
 		Customer(){
-			
+			name = "BLANK";
+			isVIP = false;
+                        int prob = rand() % 100 + 1;  // returns random number 1-100
+                        if (prob <= 10) {
+                                isVIP = true;
+                        }
 		}
 		Customer(string n){
 			name = n;
 			isVIP = false;
-			prob = rand() % 100 + 1  // returns random number 1-100
+			int prob = rand() % 100 + 1;  // returns random number 1-100
 			if (prob <= 10) {
     				isVIP = true;
 			}
@@ -26,7 +32,7 @@ class Customer{
 			isVIP = vip;
 		}
 		string getName()	{return name;}
-		bool isVIP()		(return isVIP;}
+		bool VIP()		{return isVIP;}
 		void print(){
 			cout << name;
 			if (isVIP)
@@ -203,19 +209,25 @@ class DoublyLinkedList {
 			cout << endl;
 		}
 };
+
+//returns random num between 0-98
+int randInt99();
+
 int main() {
 	ifstream fin("names.txt");
-	array<string,100> names;
+	array<string,99> names;
 	int count = 0;
 	if (fin.good( )) {
-        string line;
-	while (getline(fin, line) && count < arr.size()) {
-            	arr[count] = line;
-            	count += 1;
-        }
+        	string line;
+		while (getline(fin, line) && count < names.size()) {
+            		names[count] = line;
+            		count += 1;
+        	}
+	}
         fin.close( ); // close the file
 	//testing the file access code
-	cout << arr[10] << arr[99] << arr[0] << endl;
+	cout << names[10] << names[98] << names[0] << endl;
+	//create a 
 
 	//store opens message maybe add int for time periods, 20 total times
 	//create DLL for the queue with 5 customers using the external file of names
