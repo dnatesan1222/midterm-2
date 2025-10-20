@@ -7,7 +7,25 @@ using namespace std;
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 class Customer{
 	private:
-	publ
+		string name;
+		bool isVIP;
+	public:
+		Customer(){};
+		Customer(string n){
+			name = n;
+			isVIP = false;
+			prob = rand() % 100 + 1  // returns random number 1-100
+			if (prob <= 10) {
+    				isVIP = true;
+			}
+		}
+		Customer(string n, bool vip){
+			name = n;
+			isVIP = vip;
+		}
+		string getName()	{return name;}
+		bool isVIP()		(return isVIP;}
+		void print
 };
 
 class DoublyLinkedList {
