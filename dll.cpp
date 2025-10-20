@@ -56,7 +56,7 @@ class DoublyLinkedList {
 		Node* tail;
 	public:
 		DoublyLinkedList() { head = nullptr; tail = nullptr; }
-		void insert_after(Customer value, int position) {
+/*		void insert_after(Customer value, int position) {
 			if (position < 0) {
 				cout << "Position must be >= 0." << endl;
 				return;
@@ -82,7 +82,7 @@ class DoublyLinkedList {
 				tail = newNode;
 			temp->next = newNode;
 		}
-		void delete_val(int value) {
+		void delete_val(Customer value) {
 			if (!head) return;
 			Node* temp = head;
 			while (temp && temp->data != value)
@@ -129,7 +129,7 @@ class DoublyLinkedList {
 			temp->next->prev = tempPrev;
 			delete temp;
 		}
-		void push_back(int v) {
+*/		void push_back(Customer v) {
 			Node* newNode = new Node(v);
 			if (!tail)
 				head = tail = newNode;
@@ -139,7 +139,7 @@ class DoublyLinkedList {
 				tail = newNode;
 			}
 		}
-		void push_front(int v) {
+		void push_front(Customer v) {
 			Node* newNode = new Node(v);
 			if (!head)
 				head = tail = newNode;
@@ -191,7 +191,7 @@ class DoublyLinkedList {
 				return;
 			}
 			while (current) {
-				cout << current->data << " ";
+				cout << current->data->print << " ";
 				current = current->next;
 			}
 			cout << endl;
@@ -204,7 +204,7 @@ class DoublyLinkedList {
 			}
 			while (current) {
 				cout << current->data << " ";
-				current = current->prev;
+				current = current->prev->print;
 			}
 			cout << endl;
 		}
@@ -232,6 +232,12 @@ int main() {
 	//create a 
 
 	int period = 1;
+	DoublyLinkedList list;
+	for(int i = 0; i < 5; i++){
+		Customer a = new Customer(names[randInt99()]);
+		list.push_back(a);
+	}
+	list.print();
 	//store opens message maybe add int for time periods, 20 total times
 	cout << "Store opens:" << endl;
 	//create DLL for the queue with 5 customers using the external file of names
