@@ -43,10 +43,10 @@ class Customer{
 class DoublyLinkedList {
 	private:
 		struct Node {
-			int data;
+			Customer data;
 			Node* prev;
 			Node* next;
-			Node(int val, Node* p = nullptr, Node* n = nullptr) {
+			Node(Customer val, Node* p = nullptr, Node* n = nullptr) {
 				data = val;
 				prev = p;
 				next = n;
@@ -56,7 +56,7 @@ class DoublyLinkedList {
 		Node* tail;
 	public:
 		DoublyLinkedList() { head = nullptr; tail = nullptr; }
-		void insert_after(int value, int position) {
+		void insert_after(Customer value, int position) {
 			if (position < 0) {
 				cout << "Position must be >= 0." << endl;
 				return;
@@ -210,10 +210,12 @@ class DoublyLinkedList {
 		}
 };
 
-//returns random num between 0-98
+//randInt99() takes no arguments and creates a number between 0-98 to choose a random name
+//returns generated random num
 int randInt99();
 
 int main() {
+	srand(time(0));	//for the rand() to reset
 	ifstream fin("names.txt");
 	array<string,99> names;
 	int count = 0;
@@ -229,11 +231,17 @@ int main() {
 	cout << names[10] << names[98] << names[0] << endl;
 	//create a 
 
+	int period = 1;
 	//store opens message maybe add int for time periods, 20 total times
+	cout << "Store opens:" << endl;
 	//create DLL for the queue with 5 customers using the external file of names
 	//need to code the probabilites into the next time periods (large loop/method that has each probability?
 	//put out code in the chunks of the minutes, not by each customer operation
 	//
 	cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
 		return 0;
+}
+
+int randInt99(){
+	return rand() % 98;
 }
