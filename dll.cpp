@@ -98,7 +98,7 @@ class DoublyLinkedList {
 				tail = temp->prev;
 			delete temp;
 		}
-		void delete_pos(int pos) {
+*/		void delete_pos(int pos) {
 			if (!head) {
 				cout << "List is empty." << endl;
 				return;
@@ -129,7 +129,7 @@ class DoublyLinkedList {
 			temp->next->prev = tempPrev;
 			delete temp;
 		}
-*/		void push_back(Customer* v) {
+		void push_back(Customer* v) {
 			Node* newNode = new Node(v);
 			if (!tail)
 				head = tail = newNode;
@@ -230,6 +230,15 @@ class DoublyLinkedList {
 			}
 			cout << endl;
 		}
+		int size(){
+			int count = 0;
+			Node* temp = head;
+			while (temp->next){
+				count+=1;
+				temp = temp->next;
+			}
+			return count;
+		}
 
 };
 
@@ -239,7 +248,7 @@ int randInt99();
 
 //operation() will add a customer to the line based on probabilities
 //arguments: takes the DLL to add customers to the line and the names array to randomly select a name
-void operation(DoublyLinkedList * list, array<string,98> names);
+void operation(DoublyLinkedList * list, array<string,99> names);
 
 int main() {
 	srand(time(0));	//for the rand() to reset
@@ -274,7 +283,7 @@ int main() {
 	while (period < 20){
 		period += 1;
 		cout << "Time step #" << period << ":" << endl;
-		operation(list, names);
+		operation(&list, names);
 		list.print();
 	}
 	//put out code in the chunks of the minutes, not by each customer operation
@@ -287,7 +296,7 @@ int randInt99(){
 	return rand() % 98;
 }
 
-void operation(DoublyLinkedList * list, array<string,98> names){
+void operation(DoublyLinkedList * list, array<string,99> names){
 	//A customer being helped at the beginning of the line and ordering their coffee is 40%
 	int prob = rand() % 100 + 1;  // returns random number 1-100
 	if (prob <= 40)
@@ -306,10 +315,14 @@ void operation(DoublyLinkedList * list, array<string,98> names){
 	//Any particular customer can decide they don't want to wait and leave the line: 10%
 	prob = rand() % 100 + 1;
 	if (prob <= 10){
-		int pos = 
+		int pos = rand() % list->size();
+		list->delete_pos(pos);
 	}
 	//A VIP (very important person) customer with a Coffee House Gold Card gets to skip the line and go straight to the counter and order: 10%
-
-
+	prob = rand() % 100 + 1;
+        if (prob <= 10){
+		Customer* a = new Customer(names[randInt99()], true);
+                list->push_front(a);
+	}
 }
 
