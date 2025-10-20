@@ -36,7 +36,7 @@ class Customer{
 		void print(){
 			cout << name;
 			if (isVIP)
-				cout << " (VIP) ";
+				cout << " (VIP)";
 		}
 };
 
@@ -138,7 +138,10 @@ class DoublyLinkedList {
 				newNode->prev = tail;
 				tail = newNode;
 			}
-			cout << newNode->
+			//output the operation when customer joins the line
+			cout << "\t";
+			newNode->data->print();
+			cout << " joins the line" << endl;
 		}
 		void push_front(Customer* v) {
 			Node* newNode = new Node(v);
@@ -220,6 +223,7 @@ class DoublyLinkedList {
 //randInt99() takes no arguments and creates a number between 0-98 to choose a random name
 //returns generated random num
 int randInt99();
+void operation(DoublyLinkedList list, array<string> names);
 
 int main() {
 	srand(time(0));	//for the rand() to reset
