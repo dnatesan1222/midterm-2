@@ -43,10 +43,10 @@ class Customer{
 class DoublyLinkedList {
 	private:
 		struct Node {
-			Customer data;
+			Customer* data;
 			Node* prev;
 			Node* next;
-			Node(Customer val, Node* p = nullptr, Node* n = nullptr) {
+			Node(Customer* val, Node* p = nullptr, Node* n = nullptr) {
 				data = val;
 				prev = p;
 				next = n;
@@ -129,7 +129,7 @@ class DoublyLinkedList {
 			temp->next->prev = tempPrev;
 			delete temp;
 		}
-*/		void push_back(Customer v) {
+*/		void push_back(Customer* v) {
 			Node* newNode = new Node(v);
 			if (!tail)
 				head = tail = newNode;
@@ -138,8 +138,9 @@ class DoublyLinkedList {
 				newNode->prev = tail;
 				tail = newNode;
 			}
+			cout << newNode->
 		}
-		void push_front(Customer v) {
+		void push_front(Customer* v) {
 			Node* newNode = new Node(v);
 			if (!head)
 				head = tail = newNode;
@@ -190,8 +191,11 @@ class DoublyLinkedList {
 				cout << "List is empty." << endl;
 				return;
 			}
+			cout << "\tResulting line:" << endl;
 			while (current) {
-				cout << current->data->print << " ";
+				cout << "\t\t";
+				current->data->print();
+				cout << endl;
 				current = current->next;
 			}
 			cout << endl;
@@ -202,9 +206,12 @@ class DoublyLinkedList {
 				cout << "List is empty." << endl;
 				return;
 			}
+			cout << "\tResulting line:" << endl;
 			while (current) {
-				cout << current->data << " ";
-				current = current->prev->print;
+				cout << "\t\t";
+				current->data->print();
+				cout << endl;
+				current = current->prev;
 			}
 			cout << endl;
 		}
@@ -227,14 +234,13 @@ int main() {
         	}
 	}
         fin.close( ); // close the file
-	//testing the file access code
-	cout << names[10] << names[98] << names[0] << endl;
+
 	//create a 
 
 	int period = 1;
 	DoublyLinkedList list;
 	for(int i = 0; i < 5; i++){
-		Customer a = new Customer(names[randInt99()]);
+		Customer* a = new Customer(names[randInt99()]);
 		list.push_back(a);
 	}
 	list.print();
