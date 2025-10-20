@@ -10,7 +10,9 @@ class Customer{
 		string name;
 		bool isVIP;
 	public:
-		Customer(){};
+		Customer(){
+			
+		}
 		Customer(string n){
 			name = n;
 			isVIP = false;
@@ -25,7 +27,11 @@ class Customer{
 		}
 		string getName()	{return name;}
 		bool isVIP()		(return isVIP;}
-		void print
+		void print(){
+			cout << name;
+			if (isVIP)
+				cout << " (VIP) ";
+		}
 };
 
 class DoublyLinkedList {
@@ -198,6 +204,19 @@ class DoublyLinkedList {
 		}
 };
 int main() {
+	ifstream fin("names.txt");
+	array<string,100> names;
+	int count = 0;
+	if (fin.good( )) {
+        string line;
+	while (getline(fin, line) && count < arr.size()) {
+            	arr[count] = line;
+            	count += 1;
+        }
+        fin.close( ); // close the file
+	//testing the file access code
+	cout << arr[10] << arr[99] << arr[0] << endl;
+
 	//store opens message maybe add int for time periods, 20 total times
 	//create DLL for the queue with 5 customers using the external file of names
 	//need to code the probabilites into the next time periods (large loop/method that has each probability?
