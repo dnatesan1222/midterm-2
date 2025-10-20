@@ -5,6 +5,11 @@
 #include <iostream>
 using namespace std;
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+class Customer{
+	private:
+	publ
+};
+
 class DoublyLinkedList {
 	private:
 		struct Node {
@@ -175,6 +180,11 @@ class DoublyLinkedList {
 		}
 };
 int main() {
+	//store opens message maybe add int for time periods, 20 total times
+	//create DLL for the queue with 5 customers using the external file of names
+	//need to code the probabilites into the next time periods (large loop/method that has each probability?
+	//put out code in the chunks of the minutes, not by each customer operation
+	//
 	cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
 		return 0;
 }
