@@ -187,6 +187,10 @@ class DoublyLinkedList {
 			}
 			else
 				head = tail = nullptr;
+			//output the operation when customer has left the line (based on sample output example)
+			cout << "\t";
+			temp->data->print();
+			cout << " exits the rear of the line" << endl;
 			delete temp;
 		}
 		~DoublyLinkedList() {
@@ -226,6 +230,7 @@ class DoublyLinkedList {
 			}
 			cout << endl;
 		}
+
 };
 
 //randInt99() takes no arguments and creates a number between 0-98 to choose a random name
@@ -285,12 +290,24 @@ int randInt99(){
 void operation(DoublyLinkedList * list, array<string,98> names){
 	//A customer being helped at the beginning of the line and ordering their coffee is 40%
 	int prob = rand() % 100 + 1;  // returns random number 1-100
-	if (prob <= 40) {
+	if (prob <= 40)
     		list->pop_front();
-	}
 	//A new customer joining the end of the line is 60%
+	prob = rand() % 100 + 1;
+	if (prob <= 60){
+		Customer* a = new Customer(names[randInt99()], false);
+		list->push_back(a);
+	}
 	//The customer at the end of the line deciding they don't want to wait and leaving is 20%
+	prob = rand() % 100 + 1;
+	if (prob <= 20){
+		list->pop_back();
+	}
 	//Any particular customer can decide they don't want to wait and leave the line: 10%
+	prob = rand() % 100 + 1;
+	if (prob <= 10){
+		int pos = 
+	}
 	//A VIP (very important person) customer with a Coffee House Gold Card gets to skip the line and go straight to the counter and order: 10%
 
 
