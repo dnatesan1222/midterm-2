@@ -152,6 +152,10 @@ class DoublyLinkedList {
 				head->prev = newNode;
 				head = newNode;
 			}
+			//output the operation when VIP customer joins the line
+                        cout << "\t";
+                        newNode->data->print();
+                        cout << " joins the front of the line" << endl;
 		}
 		void pop_front() {
 			if (!head) {
@@ -250,17 +254,24 @@ int main() {
 
 	int period = 1;
 	DoublyLinkedList list;
-	for(int i = 0; i < 5; i++){
-		Customer* a = new Customer(names[randInt99()]);
-		list.push_back(a);
-	}
-	list.print();
-	list.pop_front();
-	list.print();
 	//store opens message maybe add int for time periods, 20 total times
-	cout << "Store opens:" << endl;
+	cout << "\nStore opens:" << endl;
 	//create DLL for the queue with 5 customers using the external file of names
+	for(int i = 0; i < 5; i++){
+                Customer* a = new Customer(names[randInt99()]);
+                if (a->VIP())
+			list.push_front(a);
+		else
+			list.push_back(a);
+        }
+	list.print();
 	//need to code the probabilites into the next time periods (large loop/method that has each probability?
+	while (period < 20){
+		period += 1;
+		cout << "Time step #" << period << ":" << endl;
+		operation(list, names);
+		list.print();
+	}
 	//put out code in the chunks of the minutes, not by each customer operation
 	//
 	cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
